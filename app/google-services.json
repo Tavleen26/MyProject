@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "688898318576",
+    "firebase_url": "https://project-5d2f1.firebaseio.com",
+    "project_id": "project-5d2f1",
+    "storage_bucket": "project-5d2f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688898318576:android:5db6c4c3917f5d91",
+        "android_client_info": {
+          "package_name": "com.tavleen.myproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqkjEu5GvoDg9qliMy431REjVTeIFBBmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688898318576-4irbhplvsi71ctobbrb8go8kie4navum.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
