@@ -13,6 +13,7 @@ import com.tavleen.myproject.R;
 import com.tavleen.myproject.listener.OnRecyclerItemClickListener;
 import com.tavleen.myproject.model.Baby;
 import com.tavleen.myproject.model.Vaccination;
+import com.tavleen.myproject.model.VaccinationDetails;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.viewHold
     int resource;
     Baby baby;
     ArrayList<Vaccination> objects;
+    ArrayList<VaccinationDetails>object;
     OnRecyclerItemClickListener recyclerItemClickListener;
 
     public void setOnRecyclerItemClickListener(OnRecyclerItemClickListener recyclerItemClickListener){
@@ -33,6 +35,10 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.viewHold
         this.resource = resource;
         this.objects = objects;
     }
+
+
+
+
 
     public VaccineAdapter.viewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(context).inflate(resource,parent,false);

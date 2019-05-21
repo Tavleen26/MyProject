@@ -58,44 +58,100 @@ public class AllBabiesActivity extends AppCompatActivity implements OnRecyclerIt
     }
 
     void fetchBabyFromCloudDB(){
+
+
         db.collection("user").document(firebaseUser.getUid()).collection("baby").get().addOnCompleteListener(this, new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isComplete()){
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isComplete()) {
 
-                   babies=new ArrayList<>();
+                        babies = new ArrayList<>();
 
-                    QuerySnapshot querySnapshot=task.getResult();
-                    List<DocumentSnapshot> documentSnapshots=querySnapshot.getDocuments();
-                    for(DocumentSnapshot snapshot:documentSnapshots){
-                        String docId=snapshot.getId();
-                        Baby baby=snapshot.toObject(Baby.class);
-                        baby.docId=docId;
-                        babies.add(baby);
+                        QuerySnapshot querySnapshot = task.getResult();
+                        List<DocumentSnapshot> documentSnapshots = querySnapshot.getDocuments();
+                        for (DocumentSnapshot snapshot : documentSnapshots) {
+                            String docId = snapshot.getId();
+                            Baby baby = snapshot.toObject(Baby.class);
+                            baby.docId = docId;
+                            babies.add(baby);
 
-                        getSupportActionBar().setTitle("Total babies:"+babies.size());
+                            getSupportActionBar().setTitle("Total babies:" + babies.size());
 
-                        babyAdapter=new BabyAdapter(AllBabiesActivity.this,R.layout.babies_list_item,babies);
+                            babyAdapter = new BabyAdapter(AllBabiesActivity.this, R.layout.babies_list_item, babies);
+                            babyAdapter.notifyDataSetChanged();
 
-                        babyAdapter.setOnRecyclerItemClickListener(AllBabiesActivity.this);
+                            babyAdapter.setOnRecyclerItemClickListener(AllBabiesActivity.this);
 
-                        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(AllBabiesActivity.this);
-                        recyclerView.setLayoutManager(linearLayoutManager);
-                        recyclerView.setAdapter(babyAdapter);
-                        recyclerView.getAdapter().notifyDataSetChanged();
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(AllBabiesActivity.this);
+                            recyclerView.setLayoutManager(linearLayoutManager);
+                            recyclerView.setAdapter(babyAdapter);
+//                        recyclerView.getAdapter().notifyDataSetChanged();
+                            babyAdapter.notifyDataSetChanged();
+                        }
+
+
+                    } else {
+                        Toast.makeText(AllBabiesActivity.this, "Some Error", Toast.LENGTH_LONG).show();
+
                     }
-
-
-                }else{
-                    Toast.makeText(AllBabiesActivity.this,"Some Error",Toast.LENGTH_LONG).show();
-
                 }
-            }
-        });
-    }
+            });
+        }
+
+
+
+//    void fetchBabyFromCloudDB(){
+//        String id=baby.uId;
+//
+//            db.collection("babies").get().addOnCompleteListener(this, new OnCompleteListener<QuerySnapshot>() {
+//                @Override
+//                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                    if (task.isComplete()) {
+//
+//                        babies = new ArrayList<>();
+//
+//                        QuerySnapshot querySnapshot = task.getResult();
+//                        List<DocumentSnapshot> documentSnapshots = querySnapshot.getDocuments();
+//                        for (DocumentSnapshot snapshot : documentSnapshots) {
+//                            String id=baby.uId;
+////                            String docId = snapshot.getId();
+////                            Baby baby = snapshot.toObject(Baby.class);
+////                            baby.docId = docId;
+//                            if(id.equals(firebaseUser.getUid())) {
+//                                String docId = snapshot.getId();
+//                                Baby baby = snapshot.toObject(Baby.class);
+//                                baby.docId = docId;
+//                                babies.add(baby);
+//                                getSupportActionBar().setTitle("Total babies:" + babies.size());
+//
+//                                babyAdapter = new BabyAdapter(AllBabiesActivity.this, R.layout.babies_list_item, babies);
+//                                babyAdapter.notifyDataSetChanged();
+//
+//                                babyAdapter.setOnRecyclerItemClickListener(AllBabiesActivity.this);
+//
+//                                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(AllBabiesActivity.this);
+//                                recyclerView.setLayoutManager(linearLayoutManager);
+//                                recyclerView.setAdapter(babyAdapter);
+////                        recyclerView.getAdapter().notifyDataSetChanged();
+//                                babyAdapter.notifyDataSetChanged();
+//                            }
+//                            else{
+//                                Toast.makeText(AllBabiesActivity.this, "Some Error", Toast.LENGTH_LONG).show();
+//                            }
+//
+//                        }
+//
+//                    } else {
+//                        Toast.makeText(AllBabiesActivity.this, "Some Error", Toast.LENGTH_LONG).show();
+//
+//                    }
+//                }
+//            });
+//        }
+
 
     void  deleteBabyFromCloudDb(){
-        db.collection("user").document(firebaseUser.getUid()).collection("baby").document(baby.docId).delete().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+        db.collection("babies").document(baby.docId).delete().addOnCompleteListener(this, new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isComplete()){
@@ -144,29 +200,30 @@ public class AllBabiesActivity extends AppCompatActivity implements OnRecyclerIt
 
     void showOptions(){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        String [] items={"View "+baby.name,"Update "+baby.name,"Delete "+baby.name,"Cancel "+baby.name,"Vaccination Chart "+baby.name};
+        String [] items={"Update "+baby.name,"Delete "+baby.name,"Cancel "+baby.name,"Vaccination Chart "+baby.name};
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
                     case 0:
-                          showBabyDetails();
-                        break;
-                    case 1:
-                        Intent intent=new Intent(AllBabiesActivity.this,AddBaby.class);
+//                          showBabyDetails();
+                        Intent intent=new Intent(AllBabiesActivity.this, AddBabyActivity.class);
                         intent.putExtra("keyBaby",baby);
                         startActivity(intent);
+
                         break;
-                    case 2:
+                    case 1:
                         askForDeletion();
                         break;
-                    case 3:
+                    case 2:
+
                         break;
-                    case 4:
+                    case 3:
                         Intent intent1=new Intent(AllBabiesActivity.this,VaccinationChartActivity.class);
                         intent1.putExtra("keyBabyId",baby.docId);
                         startActivity(intent1);
                         break;
+
                 }
             }
         });

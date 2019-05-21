@@ -2,29 +2,21 @@ package com.tavleen.myproject.model;
 
 public class User {
 
+
     public String name;
     public  String email;
-    public  String password;
-    public  String phone;
 
+    public String token;
 
     public User() {
     }
 
-    public User(String name, String email, String password, String phone) {
+    public User(String name, String email, String token) {
         this.name = name;
         this.email = email;
-        this.password = password;
-        this.phone = phone;
+        this.token = token;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
+
+
 }

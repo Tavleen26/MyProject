@@ -3,10 +3,10 @@ package com.tavleen.myproject.ui;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,14 +25,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.tavleen.myproject.R;
 import com.tavleen.myproject.adapter.BabyAdapter;
 import com.tavleen.myproject.adapter.VaccineAdapter;
 import com.tavleen.myproject.model.Baby;
+import com.tavleen.myproject.model.User;
 import com.tavleen.myproject.model.Util;
 import com.tavleen.myproject.model.Vaccination;
 
+import java.io.Console;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,8 +45,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class AddBabyActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
-
-    private TextView mTextMessage;
 
     TextView txtTitle;
     TextView txtGender;
@@ -51,6 +54,7 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
 
 
 
+    User user;
 
     boolean updateMode;
     Button btnAdd;
@@ -70,8 +74,8 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
 
     VaccineAdapter vaccineAdapter;
     ListView listView;
-    ArrayList<Vaccination> vaccinationArrayList;
-
+   ArrayList<Vaccination> vaccinationArrayList;
+    FirebaseInstanceId firebaseInstanceId;
 
     void initViews() {
 
@@ -93,6 +97,8 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
         db = FirebaseFirestore.getInstance();
         firebaseUser = auth.getCurrentUser();
 
+        user=new User();
+
 
 
         rbMale.setOnCheckedChangeListener(this);
@@ -112,14 +118,15 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
 
         if(updateMode){
 
+            String pattern = "yyyy-MM-dd";
+
 
             baby=(Baby)rcv.getSerializableExtra("keyBaby");
 
 
             txtTitle.setText("Update Baby");
             eTxtName.setText(baby.name);
-            eTxtDOB.setText(new SimpleDateFormat("MM-dd-yyyy").format(baby.dob));
-
+//            eTxtDOB.setText( new SimpleDateFormat(pattern).format(baby.dob));
             btnAdd.setText("Update Baby");
 
 
@@ -129,7 +136,7 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
 
     }
 
-    Date pickedDate=null;
+   Date pickedDate=null;
     DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -150,39 +157,14 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
     };
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    Intent intent=new Intent(AddBabyActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_baby2);
-
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        setContentView(R.layout.activity_add_baby);
         initViews();
+
     }
+
 
     void showDatePickerDialog() {
 
@@ -197,19 +179,24 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
         datePickerDialog.show();
     }
 
+
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             baby.name = eTxtName.getText().toString();
-            baby.dob = pickedDate;
+            baby.dob = pickedDate.toString();
+
+            baby.uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 //            Log.i("TEST","Picked Date year is:"+pickedDate);
 
 
             if (Util.isInternetConnected(AddBabyActivity.this)) {
 
-
+//                getId();
+//                babyDetails();
                 babyDetails();
+//                getToken();
             } else {
                 Toast.makeText(AddBabyActivity.this, "Please connect to Internet and Try Again", Toast.LENGTH_LONG).show();
             }
@@ -218,8 +205,105 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
         }
     };
 
+
     void saveUserInCloud() {
 
+        if (updateMode) {
+            db.collection("babies").document(baby.docId).set(baby).addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isComplete()) {
+                        babyAdapter.notifyDataSetChanged();
+                        Toast.makeText(AddBabyActivity.this, "Updation Finished", Toast.LENGTH_LONG).show();
+                        finish();
+                    } else {
+                        Toast.makeText(AddBabyActivity.this, "Updation Failed", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
+        } else {
+
+
+            db.collection("user").document(firebaseUser.getUid()).get().addOnCompleteListener(this, new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                    if(task.isComplete()){
+                        User user=task.getResult().toObject(User.class);
+
+                        baby.token=user.token;
+
+
+                        db.collection("babies").add(baby).addOnCompleteListener(AddBabyActivity.this, new OnCompleteListener<DocumentReference>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentReference> task) {
+
+                            }
+                        });
+
+                    }
+                }
+            });
+
+
+
+
+        }
+    }
+
+
+//    void saveUserInCloudDB() {
+//        if (updateMode) {
+//            db.collection("user").document(firebaseUser.getUid()).collection("baby").document(baby.docId).set(baby).addOnCompleteListener(this, new OnCompleteListener<Void>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Void> task) {
+//                    if (task.isComplete()) {
+//                        babyAdapter.notifyDataSetChanged();
+//                        Toast.makeText(AddBabyActivity.this, "Updation Finished", Toast.LENGTH_LONG).show();
+//                        finish();
+//                    } else {
+//                        Toast.makeText(AddBabyActivity.this, "Updation Failed", Toast.LENGTH_LONG).show();
+//                    }
+//                }
+//            });
+//
+//        } else {
+//
+//            db.collection("user").document(firebaseUser.getUid()).collection("baby").add(baby).addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
+//
+//                public void onComplete(@NonNull Task<DocumentReference> task) {
+//
+//                    if (task.isComplete()) {
+//
+//                        String babyId = task.getResult().getId();
+//
+//                          baby.token=user.token;
+////                                 babyDetails();
+//
+//                        db.collection("user").document(firebaseUser.getUid()).collection("baby").document(babyId).set(baby.docId).addOnCompleteListener(AddBabyActivity.this, new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<Void> task) {
+//
+//                                if (task.isComplete()) {
+//
+//                                    baby.token=user.token;
+//                                }
+//
+//
+//                            }
+//                        });
+//
+//
+//                    }
+//                }
+//            });
+//        }
+//    }
+
+
+
+    void saveUsersInCloudDB() {
         if (updateMode) {
             db.collection("user").document(firebaseUser.getUid()).collection("baby").document(baby.docId).set(baby).addOnCompleteListener(this, new OnCompleteListener<Void>() {
                 @Override
@@ -236,22 +320,31 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
 
         } else {
 
-            db.collection("user").document(firebaseUser.getUid()).collection("baby").add(baby).addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
-
-                public void onComplete(@NonNull Task<DocumentReference> task) {
-
-                    if (task.isComplete()) {
-
-                        String babyId = task.getResult().getId();
+            baby.docId=auth.getCurrentUser().getUid();
 
 
-//                                 babyDetails();
+            db.collection("user").document(firebaseUser.getUid()).get().addOnCompleteListener(this, new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                        db.collection("user").document(firebaseUser.getUid()).collection("baby").document(babyId).set(baby.docId).addOnCompleteListener(AddBabyActivity.this, new OnCompleteListener<Void>() {
+                    if(task.isComplete()){
+                        User user=task.getResult().toObject(User.class);
+
+                        baby.token=user.token;
+
+                        db.collection("user").document(firebaseUser.getUid()).collection("baby").add(baby).addOnCompleteListener(AddBabyActivity.this, new OnCompleteListener<DocumentReference>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentReference> task) {
+
+                                if(task.isComplete()){
+
+                                String babyId=task.getResult().getId();
+                                    db.collection("user").document(firebaseUser.getUid()).collection("baby").document(babyId).set(baby.docId).addOnCompleteListener(AddBabyActivity.this, new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
-                                if (task.isComplete()){
+                                if (task.isComplete()) {
+
 
                                 }
 
@@ -259,21 +352,48 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
                             }
                         });
 
-
-
+                                }
+                            }
+                        });
                     }
 
                 }
 
             });
 
-
-
+//            db.collection("user").document(firebaseUser.getUid()).collection("baby").add(baby).addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
+//
+//                public void onComplete(@NonNull Task<DocumentReference> task) {
+//
+//                    if (task.isComplete()) {
+//
+//                        String babyId = task.getResult().getId();
+//
+//                        baby.token=user.token;
+////                                 babyDetails();
+//
+//                        db.collection("user").document(firebaseUser.getUid()).collection("baby").document(babyId).set(baby.docId).addOnCompleteListener(AddBabyActivity.this, new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<Void> task) {
+//
+//                                if (task.isComplete()) {
+//
+//                                    baby.token=user.token;
+//                                }
+//
+//
+//                            }
+//                        });
+//
+//
+//                    }
+//                }
+//            });
         }
     }
-
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
         int id=buttonView.getId();
         switch (id){
 
@@ -286,11 +406,14 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
             case R.id.radioButtonFemale:
                 if(isChecked){
                     Toast.makeText(AddBabyActivity.this, "You Selected Female", Toast.LENGTH_LONG).show();
-                    baby.gender="Female";
+                   baby.gender="Female";
                 }
                 break;
         }
+
     }
+
+
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(1,101,1,"All Babies");
         return super.onCreateOptionsMenu(menu);
@@ -301,6 +424,7 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
         int id=item.getItemId();
         if(id==101){
             Intent intent=new Intent(AddBabyActivity.this,AllBabiesActivity.class);
+            intent.putExtra("keyBabyId",baby.uId);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
@@ -311,6 +435,64 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
         eTxtName.setText("");
         eTxtDOB.setText("");
     }
+
+
+
+//    void getId(){
+//        firebaseInstanceId.getInstanceId()
+//                .addOnCompleteListener(this, new OnCompleteListener<InstanceIdResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+//                        if(task.isComplete()){
+//                            baby.uId = task.getResult().getToken();
+//
+//                        }
+//                    }
+//                });
+//    }
+
+
+
+//    void getToken(){
+//
+////                            baby.token = firebaseUser.getIdToken();
+////        firebaseInstanceId.getInstanceId()
+////                .addOnCompleteListener(this, new OnCompleteListener<InstanceIdResult>() {
+////                    @Override
+////                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+////                        if(task.isComplete()){
+////                            baby.token = task.getResult().getToken();
+//                             babyDetails();
+////                            clearFields();
+//////
+//
+////                        }
+////                    }
+////                });
+////                            saveUserInCloud();
+////                             baby.token=firebaseInstanceId.getToken();
+////                            babyDetails();
+//    }
+
+//    void getToken(){
+//
+//       baby.docId=auth.getCurrentUser().getUid();
+//
+//        db.collection("user").document(firebaseUser.getUid()).get().addOnCompleteListener(this, new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if(task.isComplete()){
+//                    baby.token=user.token;
+//                    babyDetails();
+//                }
+//
+//            }
+//        });
+//    }
+//
+
+
+
     void babyDetails(){
 
         Calendar call =Calendar.getInstance();
@@ -507,26 +689,31 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
 
             Calendar cal = (Calendar)babyBirthCal.clone();
 
-            cal.add(Calendar.MONTH, v.monthsAfterBirth);
+             cal.add(Calendar.MONTH, v.monthsAfterBirth);
 //             cal.add(Calendar.DAY_OF_MONTH,1);
-            cal.get(Calendar.DAY_OF_MONTH);
-            cal.get(Calendar.YEAR);
+             cal.get(Calendar.DAY_OF_MONTH);
+             cal.get(Calendar.YEAR);
 
 
 
-
-            v.vaccinationDate = cal.getTime();
-
-
-
-            vaccination.vaccinationDate=v.vaccinationDate;
+//               v.vaccinationDate=cal.getTime().toString();
+//            v.vaccinationDate = cal.getTime();
 
 
+           String date = cal.get(Calendar.YEAR) + "/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.DAY_OF_MONTH);
+
+            v.vaccinationDate = date;
         }
 
-        saveUserInCloud();
 
-        clearFields();
+        saveUsersInCloudDB();
+        saveUserInCloud();
+//             getToken();
+      clearFields();
 
     }
 }
+
+
+
+

@@ -10,17 +10,17 @@ public class Vaccination implements Serializable {
     public String name;
 
     int year,month,dayOfMonth;
-    String pattern = "yyyy-MM-dd";
-    SimpleDateFormat format = new SimpleDateFormat(pattern);
-    public Date vaccinationDate;
-
-    {
-        try {
-            vaccinationDate = format.parse(year + "-" + (month ) + "-" + dayOfMonth);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
+//    String pattern = "yyyy-MM-dd";
+//   . SimpleDateFormat format = new SimpleDateFormat(pattern);
+    public String vaccinationDate;
+//
+//    {
+//        try {
+//            vaccinationDate = format.parse(year + "-" + (month ) + "-" + dayOfMonth);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
     public int monthsAfterBirth;
@@ -30,7 +30,7 @@ public class Vaccination implements Serializable {
     }
 
 
-    public Vaccination(String name, Date vaccinationDate, int monthsAfterBirth) {
+    public Vaccination(String name, String vaccinationDate, int monthsAfterBirth) {
         this.name = name;
         this.vaccinationDate = vaccinationDate;
         this.monthsAfterBirth = monthsAfterBirth;

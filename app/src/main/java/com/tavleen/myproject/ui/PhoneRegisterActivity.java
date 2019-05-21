@@ -14,13 +14,19 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.concurrent.TimeUnit;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.tavleen.myproject.R;
+import com.tavleen.myproject.model.User;
 
 public class PhoneRegisterActivity extends AppCompatActivity {
 
@@ -29,15 +35,23 @@ public class PhoneRegisterActivity extends AppCompatActivity {
 
     PhoneAuthProvider authProvider;
     FirebaseAuth auth;
+    FirebaseInstanceId firebaseInstanceId;
+    User user;
+    FirebaseUser firebaseUser;
+    FirebaseFirestore db;
 
     void initViews(){
         eTxtPhone=findViewById(R.id.editTextPhone);
         eTxtOtp=findViewById(R.id.editTextOtp);
         btnProceed=findViewById(R.id.buttonProceed);
         btnProceed.setOnClickListener(clickListener);
+        user=new User();
+
 
         authProvider=PhoneAuthProvider.getInstance();
         auth=FirebaseAuth.getInstance();
+        firebaseUser=auth.getCurrentUser();
+
     }
 
 
@@ -46,6 +60,8 @@ public class PhoneRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_register);
         initViews();
+
+
     }
 
     View.OnClickListener clickListener=new View.OnClickListener() {
@@ -53,8 +69,20 @@ public class PhoneRegisterActivity extends AppCompatActivity {
         public void onClick(View v) {
             String phone=eTxtPhone.getText().toString().trim();
 
-            authProvider.verifyPhoneNumber(phone,70, TimeUnit.SECONDS,PhoneRegisterActivity.this,callbacks);
+            //Toast.makeText(PhoneRegisterActivity.this,"Authentication failed, check your phone number or sign up",Toast.LENGTH_LONG).show();
 
+//            authProvider.verifyPhoneNumber(phone,70, TimeUnit.SECONDS,PhoneRegisterActivity.this,callbacks);
+            if(firebaseUser!=null) {
+//                authProvider.verifyPhoneNumber(phone,70, TimeUnit.SECONDS,PhoneRegisterActivity.this,callbacks);
+                Intent intent = new Intent(PhoneRegisterActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+            else{
+                Intent intent = new Intent(PhoneRegisterActivity.this,ProfileActivity.class);
+                startActivity(intent);
+            }
+
+            authProvider.verifyPhoneNumber(phone,70, TimeUnit.SECONDS,PhoneRegisterActivity.this,callbacks);
 
         }
     };
@@ -76,14 +104,24 @@ public class PhoneRegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isComplete()){
-                    FirebaseUser user=task.getResult().getUser();
-                    String userId=user.getUid();
-                    Intent intent=new Intent(PhoneRegisterActivity.this,MainActivity.class);
-                    startActivity(intent);
+
+
+//                    if(firebaseUser!=null) {
+//                        Intent intent = new Intent(PhoneRegisterActivity.this, MainActivity.class);
+//                        startActivity(intent);
+//                    }
+//                    else{
+//                        Intent intent = new Intent(PhoneRegisterActivity.this,ProfileActivity.class);
+//                        startActivity(intent);
+//                    }
+
                 }
             }
         });
     }
+
+
+
 }
 
 

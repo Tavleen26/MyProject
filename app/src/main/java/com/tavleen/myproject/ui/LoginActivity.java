@@ -57,29 +57,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        user.email=eTxtEmail.getText().toString();
-        user.password=eTxtPassword.getText().toString();
+//        user.email=eTxtEmail.getText().toString();
+//        user.password=eTxtPassword.getText().toString();
 
-        loginUser();
+//        loginUser();
 
 
     }
 
-    void loginUser(){
-        progressDialog.show();
-
-
-        auth.signInWithEmailAndPassword(user.email,user.password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                if(task.isComplete()){
-                    Intent intent=new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-        });
-    }
+//    void loginUser(){
+//        progressDialog.show();
+//
+//
+//        auth.signInWithEmailAndPassword(user.email,user.password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//
+//                if(task.isComplete()){
+//                    Intent intent=new Intent(LoginActivity.this, MainActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//            }
+//        });
+//    }
     }
 

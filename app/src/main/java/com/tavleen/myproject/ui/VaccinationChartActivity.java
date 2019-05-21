@@ -55,14 +55,6 @@ public class VaccinationChartActivity extends AppCompatActivity  {
         db=FirebaseFirestore.getInstance();
         firebaseUser=auth.getCurrentUser();
         Intent rcv=getIntent();
-//        String name=rcv.getStringExtra("keyName");
-//        updateMode=rcv.hasExtra("keyBabyId");
-
-//        if(updateMode){
-//            baby=(Baby) rcv.getSerializableExtra("keyBabyId");
-//        }
-
-//        id=getIntent().getIntExtra("keyBabyId",0);
           id=getIntent().getStringExtra("keyBabyId");
     }
 
@@ -78,42 +70,6 @@ public class VaccinationChartActivity extends AppCompatActivity  {
 
 
     void fetchVaccineFromCloudDB(){
-
-
-//        db.collection("user").document(firebaseUser.getUid()).collection("baby").document("id").get().addOnCompleteListener(this, new OnCompleteListener<QuerySnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                if(task.isComplete()){
-//
-//                    babies=new ArrayList<>();
-//
-//                    QuerySnapshot querySnapshot=task.getResult();
-//                    List<DocumentSnapshot> documentSnapshots=querySnapshot.getDocuments();
-//                    for(DocumentSnapshot snapshot:documentSnapshots){
-//                        String docId=snapshot.getId();
-//                        Baby baby=snapshot.toObject(Baby.class);
-//                        baby.docId=docId;
-//                        babies.add(baby);
-//
-//                        getSupportActionBar().setTitle("Vaccination Details:");
-//
-//                     vaccineAdapter =new VaccineAdapter(VaccinationChartActivity.this,R.layout.list_item,babies);
-//
-//
-//                        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(VaccinationChartActivity.this);
-//                        recyclerView.setLayoutManager(linearLayoutManager);
-//                        recyclerView.setAdapter(vaccineAdapter);
-//                        recyclerView.getAdapter().notifyDataSetChanged();
-//                    }
-//
-//
-//                }else{
-//                    Toast.makeText(VaccinationChartActivity.this,"Some Error",Toast.LENGTH_LONG).show();
-//
-//                }
-//            }
-//        });
-
 
         db.collection("user").document(firebaseUser.getUid()).collection("baby").document(id).get().addOnCompleteListener(this, new OnCompleteListener<DocumentSnapshot>() {
             @Override

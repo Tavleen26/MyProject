@@ -9,10 +9,10 @@ import android.os.Bundle;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import com.tavleen.myproject.ui.HomeActivity;
-import com.tavleen.myproject.ui.LoginViewActivity;
 import com.tavleen.myproject.ui.MainActivity;
-import com.tavleen.myproject.ui.RegistrationActivity;
+import com.tavleen.myproject.ui.PhoneRegisterActivity;
+import com.tavleen.myproject.ui.ProfileActivity;
+
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -42,7 +42,7 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what==101){
-                Intent intent=new Intent(SplashActivity.this, LoginViewActivity.class);
+                Intent intent=new Intent(SplashActivity.this, PhoneRegisterActivity.class);
                 startActivity(intent);
                 finish();
             }else{

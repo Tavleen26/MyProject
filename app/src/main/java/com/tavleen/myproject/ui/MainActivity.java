@@ -2,8 +2,6 @@ package com.tavleen.myproject.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,13 +17,12 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.tavleen.myproject.R;
-import com.tavleen.myproject.SplashActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    TextView btnAddBaby, btnVaccine;
+    TextView btnAddBaby, btnVaccine, btnFeed, btnAppInfo;
 
     FirebaseAuth auth;
 
@@ -33,6 +30,9 @@ public class MainActivity extends AppCompatActivity
     void initViews() {
         btnAddBaby = findViewById(R.id.buttonAddBaby);
         btnVaccine = findViewById(R.id.buttonVaccine);
+        btnFeed=findViewById(R.id.buttonFeed);
+        btnAppInfo=findViewById(R.id.buttonAppInfo);
+
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.milkshake);
 
         btnAddBaby.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +79,59 @@ public class MainActivity extends AppCompatActivity
                     public void onAnimationEnd(Animation animation) {
 
                         Intent intent = new Intent(MainActivity.this, VaccinationKnowledgeActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+            }
+        });
+        btnFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(myAnim);
+                btnFeed.setAnimation(myAnim);
+                myAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                        Intent intent = new Intent(MainActivity.this,FeedActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+            }
+        });
+
+        btnAppInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(myAnim);
+                btnFeed.setAnimation(myAnim);
+                myAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                        Intent intent = new Intent(MainActivity.this,AppInfoActivity.class);
                         startActivity(intent);
                     }
 
@@ -166,9 +219,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
             auth.signOut();
 
-            Intent intent = new Intent(MainActivity.this, LoginViewActivity.class);
+            Intent intent = new Intent(MainActivity.this, PhoneRegisterActivity.class);
             startActivity(intent);
-            finish();
+            //finish();
 
 //        } else if (id == R.id.nav_slideshow) {
 //
