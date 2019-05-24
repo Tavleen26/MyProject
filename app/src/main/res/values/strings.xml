@@ -1,10 +1,347 @@
 <resources>
+    HtmlCompat.fromHtml(HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_LEGACY);
+
+    //Feed details
+    <string name="FeedIntro">These are general guidelines for feeding healthy babies.Feed your baby only one new food per week.Then you can find out if your baby has a problem with the new food.Talk with the nutritionist or health care provider for more information on feeding your baby.</string>
+    <string name="zerotofour">
+        \n<b><font color="navy" size="30">0 to 4 Months</font></b>
+        \n\n<u><font color="navy">Birth to 3 weeks:</font></u>
+\n\n->1/2 - 1 oz. increasing to 4 oz. every 2-3 hours about 8 times a day (12-24 oz.)
+\n\n
+        <u><font color="navy">3 Weeks-4 Months:</font></u>
+\n\n
+->4-6 oz. every 3-4 hours about 6 times a day (24-32 oz.)
+\n->The wee one’s digestive tract is still developing, so keep all feedings liquid. No solids yet.
+\n->Rooting reflex,a reflex seen in newborn babies causing them to automatically turn their face toward the stimulus and make sucking movements, helps your baby find nourishment organically.
+
+    </string>
+
+    <string name="fourtosix">
+        \n<b><font color="navy" size="30"><center>4 to 6 Months</center></font></b>
+        \n\n<u><font color="navy">For Liquids</font></u>
+        \n(breast milk or formula):
+\n\n->Use a pacifier if baby just wants to suck formula)
+\n->5-7 oz. every 4-5 hours about 5 times a day (24-36 oz.)
+\n\n
+        <u><font color="navy">For Solids:</font></u>
+\n(liquid-soaked rice cereal, later try adding grain cereals):
+\n\n->Start with mixing 1 teaspoon dry iron-fortified rice cereal with 4 to 5 teaspoons breast milk or formula. Little by little thicken mixture by increasing to 1 tablespoon dry cereal combined with breast milk or formula. Mixture should be fed twice a day.
+\n->Remember not to prop the bottle as little ones can often choke this way. And though there are even propping devices sold, feeding time should be bonding time. Try to simulate breastfeeding rituals even if bottle feeding. Look into baby’s eyes, stoke their back,
+\n->Create an intimate space.
+
+    </string>
+
+    <string name="sixtonine">
+        \n<b><font color="navy" size="30"><center>6 to 9 Months</center></font></b>
+        \n\n<u><font color="navy">For Liquids</font></u>
+        \n(breast milk or formula):
+\n\n->7-8 oz. about every 6 hours approximately 4 times a day (24-32 oz.)
+\n\n
+        <u><font color="navy">For Solids:</font></u>
+\n(iron-fortified cereals, pureed or strained fruits and vegetables)
+\n\n->3 to 9 tablespoons cereal given over 2 to 3 feedings per day
+\n->1 teaspoon fruit, gradually increased to 1/4 to 1/2 cup in 2 to 3 feedings per day
+\n->1 teaspoons vegetable, gradually increased to 1/4 to 1/2 cup in 2 to 3 feedings per day
+\n->Be sure to introduce new foods one at a time, to ensure your sweet babe is not allergic. Wait at least three days in between each new food
+\n->Pureed or strained fruits to try include banana, pears, applesauce, peaches, apricots, plums, and avocado (yes, avocado is a fruit!)
+\n->Pureed or strained vegetables to try include well-cooked carrots, squash, sweet potato, green beans, and peas
+\n->Always nurse or formula feed first before introducing solids
+
+    </string>
+
+    <string name="ninetotwelve">
+        \n<b><font color="navy" size="30"><center>9 to 12 Months</center></font></b>
+        \n\n<u><font color="purple">For Liquids</font></u>
+        \n(breast milk or formula):
+\n\n->7-8 oz. about every 6 hours approximately 4 times a day (24-32 oz.)
+\n\n
+        <u><font color="navy">For Solids:</font></u>
+\n(iron-fortified cereals, pureed or strained fruits and vegetables, small amounts of dairy products, finger foods, proteins, non-citrus juice).
+\n
+\n->1/4 to 1/3 cup dairy (or 1/2 oz. cheese) per day.
+\n->1/4 to 1/2 cup iron-fortified cereal per day
+\n->1/4 to 1/2 cup fruit per day
+\n->1/4 to 1/2 cup vegetables per day
+\n->1/8 to 1/4 cup protein foods per day
+\n->3 to 4 oz. non-citrus juices per day
+\n->Start feeding in high chair
+\n->Try using a cup for juice. Remember, juice doesn’t replace breast milk or formula. Non-citrus juices include apple or pear
+\n->Feed only foods that will dissolve in baby’s mouth
+\n->Dairy products suitable for baby include soft pasteurized cheese, yogurt, cottage cheese; no cow’s milk till 1 year
+\n->Fruit and vegetables can now be cut into cubes or strips and fed to baby, as can purees and mashes. Vegetables should always be bite-sized and soft-cooked until tender
+\n->Small amounts of proteins should be introduced. These can include egg, pureed meats and poultry as well as boneless fish. Tofu is also a great baby protein. Also try offering baby well-cooked and/or mashed beans with soft skins like lentils, split peas, pintos, black beans
+\n->Finger foods include cut-up lightly-toasted bagel pieces, well-cooked piece pasta (no noodles), teething crackers, and low-sugar cereals
+\n->It is also during the later of the months that combo foods can be given to baby. Try tasty treats like macaroni and cheese or casseroles
+
+    </string>
+
+    <string name="twelvetoeighteen">
+        \n<b><font color="navy" size="30"><center>12 to 18 Months</center></font></b>
+        \n\n<u><font color="purple">For Liquids:</font></u>
+\n\n->Approx. 4 oz. cow’s/soy milk (or yogurt) up to 4 times a day
+\n->You may continue to breastfeed as long as you and baby would like, baby will self-regulate amounts. Continue to introduce solids
+\n\n
+        <u><font color="navy">For Solids:</font></u>
+\n\n->Dairy: 4 daily servings; 1/2 Cup; 3/4 Ounce Cheese
+\n->Bread, Cereal, Rice and Pasta: 6 daily servings; 1/2 Slice or 1/4 Cup
+\n->Fruit: 3 daily servings; 1/4 Cup Cooked; 1/2 Cup Raw
+\n->Vegetables: 2 daily servings; 1/4 Cup Cooked; 1/2 Cup Raw
+\n->Protein: 2 daily servings; 1 Tablespoon; 1 Egg; 1/2 Cup Cooked Beans and Eggs
+\n->3 to 4 oz. non-citrus juices per day
+\n\n
+->Give your child snacks at the table rather than letting them walk around grazing
+\n->If your child hasn’t given up the bottle yet, now’s the time
+\n->Your child can eat almost any food after age 1 as long as it’s in a form that’s safe for him, i.e. pureed or finely chopped – just no reduced-fat milks
+\n->Your toddler will continue to show a heightened interest in self-feeding, first with fingers and then with utensils at around 15 to 18 months of age. Use every opportunity possible to practice the skills needed for self-feeding
+\n->Be sure to lend a hand when frustrations occur
+
+    </string>
+
+    <string name="eighteentotwentyfour">
+        \n<b><font color="navy" size="30"><center>18 to 24 Months</center></font></b>
+        \n\n<u><font color="navy">For Liquids:</font></u>
+\n\n->Approx. 12-20 oz. cow’s/soy milk per day
+\n->You may continue to breastfeed as long as you and baby would like; baby will self-regulate amounts. Continue to introduce solids
+\n->Your growing babe should have three to six cups of water per day including the water in breast milk, juices, whole milk and food. Supplement with drinking water
+\n\n
+        <u><font color="navy">For Solids:</font></u>
+\n\n->Dairy: 4 daily servings; 1/2 Cup; 3/4 Ounce Cheese
+\n->Bread: Cereal, Rice and Pasta: 6 daily servings; 1/2 Slice or 1/4 Cup
+\n->Fruit: 3 daily servings; 1/4 Cup Cooked; 1/2 Cup Raw
+\n->Vegetables: 2 daily servings; 1/4 Cup Cooked; 1/2 Cup Raw
+\n->Protein: 2 daily servings; 1 Tablespoon; 1 Egg; 1/2 Cup Cooked Beans
+\n\n
+->Offer your little love three meals and two or three snacks each day, but remember that it’s quite common for your 18-24 month old to skip meals
+\n->Skipping a meal may be a difficult concept for you, but children need to learn to listen to internal cues for hunger and fullness
+\n->Don’t be a pusher; allow a kid who’s not hungry to wait it out. Allowing children to eat on demand all day can be just as harmful
+\n->Continue serving iron-fortified cereal until your child is 18 to 24 months old to ensure correct iron levels and counteract possible anemia
+\n->Speak with your doctor if you’re considering giving your child a vitamin supplement
+
+    </string>
+
+    <string name="twentyfour">
+        \n<b><font color="navy" size="30"><center>24 Months</center></font></b>
+        \n\n<u><font color="navy">For Liquids:</font></u>
+\n\n->Children should be given five to eight cups of water per day including the water in beverages and food. Make up for extra with drinking water
+\n\n
+Liquids should include:
+\n->Milk
+\n->Juice
+\n->Water
+\n\n
+        <u><font color="navy">For Solids:</font></u>
+\n\n
+->Dairy: 5 daily servings; 1/2 Cup; 3/4 Ounce Cheese
+\n->Bread, Cereal, Rice and Pasta: 7 daily servings; 1/2 Slice or 1/4 Cup
+\n->Fruit: 3 daily servings; 1/4 Cup Cooked; 1/2 Cup Raw
+\n->Vegetables: 3 daily servings; 1/4 Cup Cooked; 1/2 Cup Raw
+\n->Protein: 2 daily servings; 1 Tablespoon; 1 Egg; 1/2 Cup Cooked Beans and Eggs
+\n\n
+->After your rapidly growing little one turns two, they can enjoy the same foods the rest of the family eats, just control portion size
+\n->Continue to serve three meals per day with two optional snacks
+\n->Offering your tot a balanced diet with minimum saturated fats and partially hydrogenated fat aids in developing the healthy eating habits later on
+
+
+    </string>
+
+
+    //Vaccine details
+
+    <string name="BCG">
+        \n<b><font color="navy" size="30"><center>BACILLUS CALMETTE GUERIN (BCG) VACCINE</center></font></b>
+\n\n\nBCG vaccine is derived from the bovine tuberculosis strain and was first developed in 1921. The vaccine contains 0.1–0.4 million live viable bacilli per dose
+\n\n
+        <b>Recommended Schedule:</b>
+\nAt Birth or as early as possible within the first 3 days
+
+
+    </string>
+
+    <string name="DTP">
+        \n<b><font color="navy" size="30"><center>DIPHTHERIA, TETANUS AND PERTUSSIS VACCINES (DTP)</center></font></b>
+\n\nThere are two types of DTP vaccines are available. These are:
+\n1)DTwP Vaccines
+Popularly known as triple antigen, DTwP is composed of tetanus and diphtheria toxoids as well as killed whole cell pertussis bacilli adsorbed on insoluble aluminium salts which act as adjuvants.
+\n2)DTaP Vaccines
+All aP vaccines are associated with significantly lesser side-effects, and thus the replacement of the wP vaccines was mainly driven by the safety-profile of these vaccines
+\n\nNote:
+DTaP may be preferred to DTwP in children with history of severe adverse effects after previous dose/s of DTwP or children with neurologic disorders.
+        \n<b>Minimum Age:</b> 6 weeks
+\n\n
+        <b>Recommended Schedule:</b>
+\nThree primary doses at 6, 10 and 14 Weeks and two boosters at 15 to 18 months and 5 years
+\n\nNote:
+\nThe first booster (4th dose) may be administered as early as age 12 months, provided at least 6 months have elapsed since the third dose.
+
+    </string>
+
+    <string name="HepA">
+        \n<b><font color="navy" size="30"><center>HEPATITIS A VACCINES (Hep A)</center></font></b>
+\n\nHepatitis A virus (HAV) infection is a relatively benign infection in young children. As many as 85% of children below 2 years and 50% of those between 2 and 5 years infected with HAV are anicteric and may have no symptoms at all or just have non-specific symptoms like fever, malaise, diarrhea, vomiting, cough, etc. like any other viral infection
+\n\n
+        <b>Minimum age:</b> 12 months
+        \n\n<b>Recommended Schedule:</b>
+\n2-dose hepatitis A vaccine series are recommended for children aged 12 through 23 months; Children, who have received 1 dose of hepatitis A vaccine before age 24 months, should receive a second dose 6 to 18 months after the first dose. Two doses of both killed and live hepatitis A vaccines as of now.
+
+    </string>
+
+    <string name="HepB">
+        \n<b><font color="navy" size="30"><center>HEPATITIS B VACCINE (Hep B)</center></font></b>
+\n\nHepatitis B Virus (HBV) is the major cause of chronic liver disease and hepato-cellular carcinoma and Hepatitis B vaccine may also be given in any of the following schedules
+\n\n
+(i)6 and 14 weeks
+\n
+(ii)6, 10 and 14 weeks
+\n
+(iii)Birth, 6 weeks, 6 months
+\n
+(iv)Birth, 6 weeks, 10 weeks, and 14 weeks
+\n\n
+None of the above schedules needs boosters But More generally (ii) schedule is followed.
+        \n\n<b>Recommended Schedule:</b>
+\nThree primary doses at 6, 10 and 14 Weeks
+
+    </string>
+
+    <string name="Hib">
+        \n<b><font color="navy" size="30"><center>HAEMOPHILUS INFLUENZAE TYPE B (Hib) CONJUGATE VACCINES</center></font></b>
+\n\nHaemophilus Influenzae Type B (Hib) is an important invasive pathogen causing diseases such as meningitis, bacteremia, pneumonia, cellulitis, osteomyelitis, septic arthritis and epiglottitis
+        \n\n<b>Minimum age:</b> 6 weeks
+        \n\n<b>Recommended Schedule:</b>
+\nPrimary series includes Hib conjugate vaccine at ages 6, 10, 14 weeks with a booster at age 12 through 18 months
+
+    </string>
+
+    <string name="IPV">
+        \n<b><font color="navy" size="30"><center>INACTIVATED POLIO VACCINE (IPV)</center></font></b>
+\n\nIPV is formaldehyde killed poliovirus, grown in monkey kidney cell/human diploid cells.
+        \n\n<b>Minimum age:</b> 6 weeks.
+        \n\n<b>Recommended Schedule:</b>
+\nThree primary doses at 6, 10 and 14 Weeks and one booster at 15 to 18 months
+\n\n<b>Note:</b>
+\nAll doses of IPV may be replaced with OPV if administration of the IPV is unfeasible. No of doses for primary series can be 2 instead of 3 if primary series started at 8 weeks and the interval between the doses is kept 8 weeks.
+
+    </string>
+
+    <string name="Influenza">
+        \n<b><font color="navy" size="30"><center>INFLUENZA VACCINE</center></font></b>
+\n\nTrivalent Inactivated Influenza vaccine (TIV) is recommended only for the vaccination of persons with certain high-risk conditions.
+\n\n<b>Minimum age:</b> 6months
+\n\n<b>Recommended Schedule:</b>
+\nFirst time vaccination: 6 months to below 9 years: Two doses 1 month apart.
+\n9 years and above: Single dose
+\n\n<b>Note:</b>
+\nAnnual re-vaccination with single dose. All the currently available TIVs in the country contain the ‘Swine flu’ or ‘A’ (H1N1)’ antigen; no need to vaccinate separately Best time to vaccinate: As soon as the new vaccine is released and available in the market or Just before the onset of rainy season
+
+    </string>
+
+    <string name="MMR">
+        \n<b><font color="navy" size="30"><center>MEASLES, MUMPS AND RUBELLA VACCINES (MMR)</center></font></b>
+\n\nRubella per se a mild exanthematous illness but if acquired in the first trimester of pregnancy can lead to disastrous consequences in the fetus/ new born such as abortion, still birth, mental retardation, congenital heart disease, blindness and cataract. Hence the objective of vaccination against rubella is protection against congenital rubella syndrome (CRS). Rubella vaccine currently derived from RA 27/3 vaccine strain grown in human diploid/chick embryo cell cultures recommends the use of MMR vaccine instead of monovalent rubella vaccine or MR vaccine so as to provide additional protection against mumps and measles.
+        \n\n<b>Minimum age:</b> 12 months
+        \n\n<b>Recommended Schedule:</b>
+\nFirst dose of MMR vaccine at age 12 through 18 months, and the second dose at age 4 through 6 years. The second dose may be administered before age 4 years, provided at least 4 weeks have elapsed since the first dose
+
+    </string>
+
+    <string name="Measles">
+        \n<b><font color="navy" size="30"><center>MEASLES</center></font></b>
+\n\nMeasles vaccine given at 9 months is an epidemiological compulsion and has almost 20% primary vaccine failure due to maternal antibodies. Therefore at least 2 or 3 measles containing vaccines are required for protection and in spite of this 5–8% may remain susceptible. Thus additional doses of measles vaccine preferably as MMR vaccine at the age of 15 months and again between 4.5 years and 5 years give durable and possibly lifelong protection against measles.
+        \n\n<b>Minimum age:</b> 9 months or 270 completed days.
+        \n\n<b>Recommended Schedule:</b>
+\nOnly one dose of Measles are recommended at 9 Months to 12 Months.
+
+    </string>
+
+    <string name="OPV">
+        \n<b><font color="navy" size="30"><center>ORAL POLO VACCINE (OPV)</center></font></b>
+\n\nOPV is a trivalent vaccine consisting of a suspension of attenuated poliovirus types 1, 2 and 3 grown in monkey kidney cell cultures and stabilized with magnesium chloride.
+        \n\n<b>Recommended Schedule:</b>
+        \n<b>Minimum age:</b> Three primary doses at 6, 10 and 14 Weeks and one boosters at 4-6 years
+
+    </string>
+
+    <string name="PCV">
+        \n<b><font color="navy" size="30"><center>PNEUMOCOCCAL CONJUGATE VACCINE (PCV)</center></font></b>
+\n\nPneumococcal infections include serious diseases such as meningitis, bacteria, and pneumonia, as well as milder but more common illnesses, such as sinusitis and otitis media. Currently two types of vaccines are licensed for use;
+\n(1) Pneumococcal Polysaccharide Vaccine (PPSV)
+\n(2) Pneumococcal Conjugate Vaccines (PCVs)
+        \n\n<b>Minimum age: 6 weeks</b>
+        \n\n<b>Recommended Schedule:</b>
+\nThree primary doses with an interval of at least 4 weeks between doses, plus a booster at least 6 months after the third dose (3p+1 schedule) and The first dose can be given as early as 6 weeks of age; the booster dose is given preferably between 12 and 15 months of age.
+\n\nNote:
+\nPreviously un-vaccinated infants aged 7 to 11 months should receive 2 doses, the second dose at least 4 weeks after the first, followed by a third dose in the second year of life Minimum interval between two doses is 4 weeks for children vaccinated at age 12 months
+
+   </string>
+
+    <string name="Rota">
+        \n<b><font color="navy" size="30"><center>ROTAVIRUS VACCINES</center></font></b>
+\n\nRotaviruses are globally the leading cause of severe, dehydrating Diarrhea in children aged less than 5 years. In low-income countries 80% of primary rotavirus infection occur among infants less than 1 year old, whereas in high-income countries, the first episode may occasionally be delayed until the age of 2–5 years. Currently two live oral vaccines are licensed and marketed worldwide:
+\nHuman Monovalent live vaccine (RV1)
+\nHuman bovine Pentavalent live vaccine (RV5)
+        \n\n<b>Minimum age:</b> 6 weeks for both RV-1 [Rotarix] and RV-5 [RotaTeq])
+        \n\n<b>Recommended Schedule:</b>
+\n1)RV1 should preferably be employed (Only two doses) in 10 and 14 week-schedule, instead of 6 and 10 weeks; the former schedule is found to be far more immunogenic than the later.
+\n2)RV5 should be employed in a three-dose 6, 10, and 14 week schedule. If any dose in series was RV5 or vaccine product is unknown for any dose in the series, a total of 3 doses of RV vaccine should be administered.
+
+    </string>
+
+    <string name="Typhoid">
+        \n<b><font color="navy" size="30"><center>TYPHOID VACCINES</center></font></b>
+\n\nTyphoid fever is a disease of developing countries associated with poor public health and low socio-economic indices. The new generation current typhoid fever vaccines include:
+\n1)Oral live Attenuated Ty21a Vaccine: Oral Live Attenuated Ty21a vaccine is not available in the country
+\n2)Vi-capsular polysaccharide (Vi-PS) vaccine: The vaccine contains highly purified antigenic fraction of Vi-capsular polysaccharide antigen of S. typhi, which is a virulence factor of the bacteria.
+\n3)Vi-capsular polysaccharides (Vi-PS) conjugate Vaccines: Vi-PS conjugate typhoid vaccine by using exotoxin A of Pseudomonas aeruginosa as a carrier protein.
+\nBoth Vi-PS (polysaccharide) and Vi-PS conjugate vaccines are available.
+\n\n<b>Note:</b>
+Vi-PS Conjugate typhoid vaccines in India: Two Different Vi-PS conjugate vaccines have been licensed in India.
+\n1. Vi-PS Conjugate Vaccine Conjugated with Tetanus Toxoid (Pedatyph ) by Bio-Med Pvt. Ltd.
+\n2. Vi-polysaccharide conjugate vaccine conjugated with Tetanus Toxoid from Bharat Biotech(Typbar-TCV )
+        \n\n<b>Minimum Age:</b>
+Vi-PS (Polysaccharide) Vaccines: 2 years
+Vi-PS (Typbar-TCV): 6 months
+        \n\n<b>Recommended Schedule:</b>
+\nVi-PS (polysaccharide) vaccines: Single dose at 2 years; Re-vaccination every 3 years; (No evidence of hypo-responsiveness on repeated revaccination so far). Vi-PS Conjugate (Typbar-TCV): Single dose at 9 to 12 months and a booster during second year of life Vi-PS Conjugate vaccine (PedaTyph): Data not sufficient to recommend for routine use.
+\n\n<b>Note:</b>
+\nSince and the incompatibility data with measles vaccine is not available, there should be an interval of at least 4 weeks either before or after the former.
+
+    </string>
+
+    <string name="Varicella">
+        \n<b><font color="navy" size="30"><center>VARICELLA VACCINE</center></font></b>
+\n\nVaricella (chickenpox) is a febrile rash illness resulting from primary infection with the varicella zoster virus (VZV). Humans are the only source of infection for this virus. It has been recommended to offer the vaccine to all healthy children with no prior history of varicella.
+        \n\n<b>Minimum Age:</b> 12 months
+        \n\n<b>Recommended Schedule:</b>
+\nFor primary immunization, the first dose should be given at the age of 15 months and the second dose at 4 to 6 years. The second dose may be administered any time 3 months after the first dose The second dose was administered at least 4 weeks after the first dose, it can be accepted as valid. All high risk children should, however, receive two doses 4 to 8 weeks apart irrespective of age The risk of breakthrough varicella is lower if given 15 months onwards.
+
+    </string>
+
+    <string name="TDAP">
+        \n<b><font color="navy" size="30"><center>TETANUS, DIPHTHERIA and PERTUSSIS</center></font></b>
+\n\nTETANUS causes painful muscle tightening and stiffness, usually all over the body.
+\nDIPHTHERIA an cause a thick coating to form in the back of the throat.
+->It can lead to breathing problems, heart failure, paralysis, and death.
+\nPERTUSSIS (Whooping Cough) causes severe coughing spells, which can cause difficulty breathing, vomiting, and disturbed sleep.
+TDaP vaccine can protect us from these diseases.
+        \n\n<b>Minimum age:</b> 10years
+        \n\n<b>Recommended Schedule:</b>
+\nTdap vaccine should be substituted for a single dose of Td in the catch-up series for children aged 7 through 10 years. Refer to the catch-up schedule if additional doses of tetanus and diphtheria toxoid–containing vaccine are needed.
+
+    </string>
+
+
+    //App Info
+    <string name="Title">Description</string>
+    <string name="Info">Vaccination of Child should be done well in time to protect the child from various diseases, but todays lifestyle results in parents load with extensive responsibilities and stress. There might have been times when parent can forgot the date of getting their child vaccinated.
+<i>i-Care</i> is an android application which has been especially designed for parents to notify the important vaccination dates and keep a track of the vaccination schedules for their child.
+</string>
+
     <string name="app_name">iCare</string>
-    <string name="title_activity_main">i-Care</string>
+    <string name="title_activity_main">iCare</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title"><font color="Black"></font>iCare</string>
+    <string name="nav_header_subtitle">#Protected Together</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_babies">AddBabies</string>
