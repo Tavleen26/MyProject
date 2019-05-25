@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_marginTop="20dp"
-    tools:context=".ui.AddBaby">
+    tools:context=".ui.AddBabyActivity">
 
     <TextView
         android:id="@+id/textViewTitle"

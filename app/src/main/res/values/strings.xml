@@ -340,8 +340,8 @@ TDaP vaccine can protect us from these diseases.
     <string name="title_activity_main">iCare</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title"><font color="Black"></font>iCare</string>
-    <string name="nav_header_subtitle">#Protected Together</string>
+    <string name="nav_header_title"><font color="Black">iCare</font></string>
+    <string name="nav_header_subtitle"><font color="Black">#Get Your Vaccine Shot</font></string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_babies">AddBabies</string>

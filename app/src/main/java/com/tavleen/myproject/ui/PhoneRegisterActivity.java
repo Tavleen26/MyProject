@@ -42,7 +42,7 @@ public class PhoneRegisterActivity extends AppCompatActivity {
 
     void initViews(){
         eTxtPhone=findViewById(R.id.editTextPhone);
-        eTxtOtp=findViewById(R.id.editTextOtp);
+        eTxtOtp=findViewById(R.id.editTextOTP);
         btnProceed=findViewById(R.id.buttonProceed);
         btnProceed.setOnClickListener(clickListener);
         user=new User();

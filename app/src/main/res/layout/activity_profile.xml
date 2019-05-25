@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/gradientmain"
     android:padding="16dp"
-    tools:context=".ui.PhoneRegisterActivity">
+    tools:context=".ui.ProfileActivity">
 
 
 
@@ -19,42 +19,42 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="30dp"
         android:textAlignment="center"
-        android:text="Login Yourself"
+        android:text="My Profile"
         android:textColor="@color/Navy"
         android:textStyle="bold"/>
 
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="phone"
+        android:inputType="textPersonName"
         android:layout_marginBottom="30dp"
         android:textColor="@color/fonts"
-        android:hint="Enter Your Phone Number" />
+        android:hint="Enter Your Name" />
 
 
 
     <EditText
-        android:id="@+id/editTextOTP"
+        android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:textColor="@color/fonts"
-        android:inputType="number"
-        android:hint="Enter Your OTP"
+        android:inputType="textEmailAddress"
+        android:hint="Enter Your Email"
         />
 
 
     <Button
-        android:id="@+id/buttonProceed"
+        android:id="@+id/buttonProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@color/end"
         android:textColor="@color/Navy"
         android:layout_gravity="center"
-        android:text="Verify" />
+        android:text="Proceed" />
 
 </LinearLayout>

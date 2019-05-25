@@ -52,7 +52,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
         String channelId = "MyChannelId";
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
-                        .setSmallIcon(R.drawable.babyangel)
+                        .setSmallIcon(R.drawable.ic_notifications_black_24dp)
                         .setContentTitle("Vaccination Due")
                         .setContentText(messageBody)
                         .setAutoCancel(true)

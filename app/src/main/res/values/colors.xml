@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0A4A7E</color>
-    <color name="colorPrimaryDark">#0A4A7E</color>
+    <color name="colorPrimary">#6fb1fc</color>
+    <color name="colorPrimaryDark">#04377C</color>
     <color name="colorAccent">#0D89EB</color>
     <color name="bgOne">#EAE9EC</color>
     <color name="bgTwo">#FCFAED</color>
-    <color name="colorWhite">#FCFAED</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="Red">#FF0000</color>
+    <color name="Maroon">#800000</color>
+    <color name="Aqua">#00FFFF</color>
+    <color name="Navy">#000080</color>
+    <color name="Gray">#808080</color>
+    <color name="Silver">#C0C0C0</color>
+    <color name="Orange">#ffa500</color>
+    <color name="Black">#000000</color>
+    <color name="Tavleen">#0A4A7E</color>
+    <color name="Button">#A8C0FF</color>
+    <color name="EXprimary">#5B86E5</color>
+    <color name="Purple">#C033C0</color>
+    <color name="Violet">#EE82EE</color>
+    <color name="Plum">#DDA0DD</color>
+    <color name="PlumLight">#F8E5F8</color>
+    <color name="PurpleDark">#701E70</color>
+    <color name="Mint">#C5F5CB</color>
+    <color name="Skin">#F8B195</color>
+    <color name="MintD">#5FC46A</color>
+    <color name="Greener">#007991</color>
+    <color name="MintDark">#58B464</color>
+    <color name="start">#0052d4</color>
+    <color name="center">#4364f7</color>
+    <color name="end">#6fb1fc</color>
+    <color name="bg">#C9DFF8</color>
+    <color name="fonts">#0D89EB</color>
+
 
 
 </resources>

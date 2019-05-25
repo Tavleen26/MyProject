@@ -118,7 +118,7 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
 
         if(updateMode){
 
-            String pattern = "yyyy-MM-dd";
+
 
 
             baby=(Baby)rcv.getSerializableExtra("keyBaby");
@@ -193,10 +193,9 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
 
             if (Util.isInternetConnected(AddBabyActivity.this)) {
 
-//                getId();
-//                babyDetails();
+
                 babyDetails();
-//                getToken();
+
             } else {
                 Toast.makeText(AddBabyActivity.this, "Please connect to Internet and Try Again", Toast.LENGTH_LONG).show();
             }
@@ -209,18 +208,31 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
     void saveUserInCloud() {
 
         if (updateMode) {
-            db.collection("babies").document(baby.docId).set(baby).addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            baby.docId=auth.getCurrentUser().getUid();
+            db.collection("user").document(firebaseUser.getUid()).get().addOnCompleteListener(this, new OnCompleteListener<DocumentSnapshot>() {
                 @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isComplete()) {
-                        babyAdapter.notifyDataSetChanged();
-                        Toast.makeText(AddBabyActivity.this, "Updation Finished", Toast.LENGTH_LONG).show();
-                        finish();
-                    } else {
-                        Toast.makeText(AddBabyActivity.this, "Updation Failed", Toast.LENGTH_LONG).show();
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                    if(task.isComplete()){
+                        User user=task.getResult().toObject(User.class);
+//                        babyAdapter.notifyDataSetChanged();
+
+//                        baby.token=user.token;
+
+                        db.collection("babies").document(baby.docId).set(baby).addOnCompleteListener(AddBabyActivity.this, new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                            }
+                        });
+
+
                     }
                 }
             });
+
+
+
 
         } else {
 
@@ -231,6 +243,7 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
 
                     if(task.isComplete()){
                         User user=task.getResult().toObject(User.class);
+//                        babyAdapter.notifyDataSetChanged();
 
                         baby.token=user.token;
 
@@ -239,6 +252,9 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {
 
+                                if(task.isComplete()){
+
+                                }
                             }
                         });
 
@@ -253,56 +269,6 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
     }
 
 
-//    void saveUserInCloudDB() {
-//        if (updateMode) {
-//            db.collection("user").document(firebaseUser.getUid()).collection("baby").document(baby.docId).set(baby).addOnCompleteListener(this, new OnCompleteListener<Void>() {
-//                @Override
-//                public void onComplete(@NonNull Task<Void> task) {
-//                    if (task.isComplete()) {
-//                        babyAdapter.notifyDataSetChanged();
-//                        Toast.makeText(AddBabyActivity.this, "Updation Finished", Toast.LENGTH_LONG).show();
-//                        finish();
-//                    } else {
-//                        Toast.makeText(AddBabyActivity.this, "Updation Failed", Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//            });
-//
-//        } else {
-//
-//            db.collection("user").document(firebaseUser.getUid()).collection("baby").add(baby).addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
-//
-//                public void onComplete(@NonNull Task<DocumentReference> task) {
-//
-//                    if (task.isComplete()) {
-//
-//                        String babyId = task.getResult().getId();
-//
-//                          baby.token=user.token;
-////                                 babyDetails();
-//
-//                        db.collection("user").document(firebaseUser.getUid()).collection("baby").document(babyId).set(baby.docId).addOnCompleteListener(AddBabyActivity.this, new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<Void> task) {
-//
-//                                if (task.isComplete()) {
-//
-//                                    baby.token=user.token;
-//                                }
-//
-//
-//                            }
-//                        });
-//
-//
-//                    }
-//                }
-//            });
-//        }
-//    }
-
-
-
     void saveUsersInCloudDB() {
         if (updateMode) {
             db.collection("user").document(firebaseUser.getUid()).collection("baby").document(baby.docId).set(baby).addOnCompleteListener(this, new OnCompleteListener<Void>() {
@@ -315,6 +281,7 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
                     } else {
                         Toast.makeText(AddBabyActivity.this, "Updation Failed", Toast.LENGTH_LONG).show();
                     }
+
                 }
             });
 
@@ -361,34 +328,7 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
 
             });
 
-//            db.collection("user").document(firebaseUser.getUid()).collection("baby").add(baby).addOnCompleteListener(this, new OnCompleteListener<DocumentReference>() {
-//
-//                public void onComplete(@NonNull Task<DocumentReference> task) {
-//
-//                    if (task.isComplete()) {
-//
-//                        String babyId = task.getResult().getId();
-//
-//                        baby.token=user.token;
-////                                 babyDetails();
-//
-//                        db.collection("user").document(firebaseUser.getUid()).collection("baby").document(babyId).set(baby.docId).addOnCompleteListener(AddBabyActivity.this, new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<Void> task) {
-//
-//                                if (task.isComplete()) {
-//
-//                                    baby.token=user.token;
-//                                }
-//
-//
-//                            }
-//                        });
-//
-//
-//                    }
-//                }
-//            });
+
         }
     }
     @Override
@@ -437,59 +377,6 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
     }
 
 
-
-//    void getId(){
-//        firebaseInstanceId.getInstanceId()
-//                .addOnCompleteListener(this, new OnCompleteListener<InstanceIdResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-//                        if(task.isComplete()){
-//                            baby.uId = task.getResult().getToken();
-//
-//                        }
-//                    }
-//                });
-//    }
-
-
-
-//    void getToken(){
-//
-////                            baby.token = firebaseUser.getIdToken();
-////        firebaseInstanceId.getInstanceId()
-////                .addOnCompleteListener(this, new OnCompleteListener<InstanceIdResult>() {
-////                    @Override
-////                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-////                        if(task.isComplete()){
-////                            baby.token = task.getResult().getToken();
-//                             babyDetails();
-////                            clearFields();
-//////
-//
-////                        }
-////                    }
-////                });
-////                            saveUserInCloud();
-////                             baby.token=firebaseInstanceId.getToken();
-////                            babyDetails();
-//    }
-
-//    void getToken(){
-//
-//       baby.docId=auth.getCurrentUser().getUid();
-//
-//        db.collection("user").document(firebaseUser.getUid()).get().addOnCompleteListener(this, new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if(task.isComplete()){
-//                    baby.token=user.token;
-//                    babyDetails();
-//                }
-//
-//            }
-//        });
-//    }
-//
 
 
 
@@ -708,8 +595,7 @@ public class AddBabyActivity extends AppCompatActivity implements CompoundButton
 
         saveUsersInCloudDB();
         saveUserInCloud();
-//             getToken();
-      clearFields();
+         clearFields();
 
     }
 }
